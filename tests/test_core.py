@@ -3,7 +3,7 @@ Tests for the core module functionality.
 """
 import pytest
 import networkx as nx
-from core import Node, GridGraph
+from src.core import Node, GridGraph
 
 def test_grid_graph():
     """Test GridGraph functionality."""

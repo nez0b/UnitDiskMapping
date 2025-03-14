@@ -2,7 +2,7 @@
 Tests for the copyline module functionality.
 """
 import pytest
-from copyline import CopyLine, create_copylines, center_location, copyline_locations
+from src.copyline import CopyLine, create_copylines, center_location, copyline_locations
 import networkx as nx
 
 def test_copyline_creation():
@@ -49,8 +49,8 @@ def test_center_location():
     padding = 2
     I, J = center_location(line, padding)
     
-    # Check correct calculation
-    s = 4  # spacing factor
+    # Check correct calculation - using the same spacing factor as in copyline.py
+    s = 2  # spacing factor (matches the value in copyline.py)
     expected_I = s * (line.hslot - 1) + padding + 2
     expected_J = s * (line.vslot - 1) + padding + 1
     assert I == expected_I

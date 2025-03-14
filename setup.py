@@ -7,7 +7,19 @@ setup(
     author="Python Port",
     author_email="example@example.com",
     url="https://github.com/yourusername/unit_disk_mapping",
-    packages=find_packages(),
+    package_dir={"": "src"},
+    packages=find_packages(where="src"),
+    # Include example scripts
+    package_data={
+        "": ["examples/*.py", "README.md"]
+    },
+    # Include test files in development mode
+    extras_require={
+        "dev": [
+            "pytest>=6.0.0",
+            "pytest-cov>=2.10.0",
+        ],
+    },
     install_requires=[
         "networkx>=2.5",
         "numpy>=1.19.0",

@@ -4,12 +4,12 @@ Tests for the mapping module functionality.
 import pytest
 import networkx as nx
 import numpy as np
-from mapping import (
+from src.mapping import (
     map_graph, embed_graph, MappingGrid, UnWeighted, Weighted,
     mis_overhead_copyline, print_config
 )
-from utils import is_independent_set
-from core import GridGraph, Node
+from src.utils import is_independent_set
+from src.core import GridGraph, Node
 
 def test_embed_graph():
     """Test graph embedding functionality."""
@@ -33,7 +33,7 @@ def create_test_mapping_result():
     grid = GridGraph((3, 3), [Node(0, 0), Node(0, 2), Node(2, 0), Node(2, 2)], 1.5)
     
     # Create a mapping result
-    from copyline import CopyLine
+    from src.copyline import CopyLine
     lines = [CopyLine(vertex=0, vslot=1, hslot=1, vstart=1, vstop=2, hstop=2),
              CopyLine(vertex=1, vslot=2, hslot=2, vstart=1, vstop=2, hstop=2)]
     
@@ -69,7 +69,7 @@ def test_map_graph():
 def test_mis_overhead_calculation():
     """Test MIS overhead calculations for copy lines."""
     # Create a simple copy line
-    from copyline import CopyLine
+    from src.copyline import CopyLine
     line = CopyLine(vertex=1, vslot=1, hslot=1, vstart=1, vstop=3, hstop=3)
     
     # Calculate overhead for unweighted

@@ -4,7 +4,7 @@ Tests for the utils module functionality.
 import pytest
 import networkx as nx
 import numpy as np
-from utils import (
+from src.utils import (
     rotate90_around, reflectx_around, reflecty_around, 
     reflectdiag_around, reflectoffdiag_around,
     unit_disk_graph, is_independent_set, is_diff_by_const

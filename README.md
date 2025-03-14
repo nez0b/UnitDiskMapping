@@ -27,7 +27,7 @@ Here's a simple example of mapping a graph to a unit disk graph:
 
 ```python
 import networkx as nx
-from unit_disk_mapping import map_graph, MinhThiTrick
+from src.unit_disk_mapping import map_graph, MinhThiTrick
 
 # Create a graph
 graph = nx.petersen_graph()
@@ -42,35 +42,58 @@ grid_graph = result.grid_graph
 nx_graph = grid_graph.to_networkx()
 ```
 
+## Directory Structure
+
+The repository is organized as follows:
+
+- `src/`: Core implementation code
+  - `core.py`: Defines the fundamental data structures (Node, Cell, GridGraph)
+  - `utils.py`: Utility functions for transformations and graph operations
+  - `copyline.py`: Implements CopyLine structure for graph embedding
+  - `pathdecomposition/`: Path decomposition algorithms
+    - `pathdecomposition.py`: Core path decomposition functionality
+    - `greedy.py`: Greedy path decomposition algorithm
+    - `branching.py`: MinhThiTrick exact algorithm
+  - `mapping.py`: Main implementation of mapping algorithms
+  - `unit_disk_mapping.py`: Main module that exports all functionality
+  - `gadgets.py`: Pattern gadgets used in the mapping process
+  - `gadgets_ext.py`: Extended gadget implementations
+  - `weighted.py`: Support for weighted graph mappings
+  - `dragondrop.py`: Implementation of the dragondrop algorithm
+  - `visualize_grid.py`: Grid visualization tools
+  - `visualize_udm.py`: Unit disk mapping visualizations
+
+- `examples/`: Example scripts demonstrating usage
+  - `example.py` - Maps and visualizes both the Petersen graph and a small custom graph
+  - `example_5vertex.py` - Creates a simple 5-vertex graph, maps it to a unit disk graph
+  - And more examples for specific features
+
+- `tests/`: Automated tests for the package
+  - Main test files for core functionality
+
+- `tests_additional/`: Additional test files
+  - Debug and visualization-specific tests
+
+- `img/`: Images and visualizations produced by examples
+
+- `doc/`: Documentation files
+  - `index.md` - Documentation overview
+  - Component-specific README files
+  - Implementation details and summaries
+
 ## Example Scripts
 
 The package includes example scripts to demonstrate usage:
 
-1. `example.py` - Maps and visualizes both the Petersen graph and a small custom graph
-2. `example_5vertex.py` - Creates a simple 5-vertex graph, maps it to a unit disk graph, and demonstrates finding an independent set:
-
 ```bash
-python example_5vertex.py
+# Run a basic example
+python examples/example.py
+
+# Run a specific example for 5-vertex graphs
+python examples/example_5vertex.py
 ```
 
-This example produces visualizations showing both the original graph and its unit disk mapping:
-
-1. `5vertex_mapping_example.png` - Shows the original graph and its unit disk mapping
-2. `5vertex_independent_set.png` - Visualizes an independent set configuration on the mapped graph
-
-## Package Structure
-
-The Python translation has the following structure:
-
-- `core.py`: Defines the fundamental data structures (Node, Cell, GridGraph)
-- `utils.py`: Utility functions for transformations and graph operations
-- `copyline.py`: Implements CopyLine structure for graph embedding
-- `pathdecomposition/`: Path decomposition algorithms
-  - `pathdecomposition.py`: Core path decomposition functionality
-  - `greedy.py`: Greedy path decomposition algorithm
-  - `branching.py`: MinhThiTrick exact algorithm
-- `mapping.py`: Main implementation of mapping algorithms
-- `unit_disk_mapping.py`: Main module that exports all functionality
+This example produces visualizations showing both the original graph and its unit disk mapping in the img/ directory.
 
 ## Testing
 
@@ -86,10 +109,12 @@ python run_tests.py
 - Support for both weighted and unweighted problems
 - Path decomposition algorithms for optimizing the mapping
 - Utilities for working with and visualizing unit disk graphs
+- Gadget patterns for handling graph crossings
+- Advanced weighted mapping functionality
 
 ## Implementation Notes
 
-This Python implementation is a translation of the original Julia code. The core functionality is implemented, but some advanced features (like pattern matching and gadget application) are simplified or omitted.
+This Python implementation is a translation of the original Julia code. The core functionality is implemented with additional features for gadget application and weighted mappings.
 
 ## Citation
 
